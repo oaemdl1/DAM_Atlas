@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_visita: 2015-07-18
+  company_id: 
+
+two:
+  fecha_visita: 2015-07-18
+  company_id: 

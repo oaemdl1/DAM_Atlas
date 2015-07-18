@@ -1,0 +1,10 @@
+<%= simple_form_for @instructor, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :fecha_visita %>
+  <%= error_span(@instructor[:fecha_visita]) %>
+  <%= f.association :company %>
+  <%= error_span(@instructor[:company_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                instructors_path, :class => 'btn btn-default' %>
+<% end %>

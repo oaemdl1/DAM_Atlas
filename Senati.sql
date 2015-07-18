@@ -108,13 +108,13 @@ create table EmpresasAprendices (
   FechaEntrega date not null,
   Semanas char(2) );
 
-create table InstructorEmpresas (
+create table InstructorEmpresas ( /* instructor - instructors*/
   idInstructor int references Instructores,
   idEmpresa int references Empresas,
   idAprendiz int references Aprendices,
   FechaVisita date not null );
 
-create table InformesSeguimiento ( 					/* - */
+create table InformesSeguimiento ( 					/* informe -  informes*/
   idInformeSeguimiento int primary key auto_increment,
   JefeCUFP nchar(50) not null,
   FechaVisita date,

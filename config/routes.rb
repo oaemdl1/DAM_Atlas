@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :instructors
   resources :blockssupervisors
   resources :supervisors
   resources :companies

@@ -1,11 +1,21 @@
 <%= simple_form_for @pea_avance, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :pea_id %>
+  <%= f.association :pea, :label_method => :detalle, :value_method => :id %>
   <%= error_span(@pea_avance[:pea_id]) %>
-  <%= f.input :dominio %>
+
+ <%= f.label(:dominio, "25") %>
+ <%= f.radio_button(:dominio, "25") %>
+ <%= f.label(:dominio, "50") %>
+ <%= f.radio_button(:dominio, "50") %>
+ <%= f.label(:dominio, "75") %>
+ <%= f.radio_button(:dominio, "75") %>
+ <%= f.label(:dominio, "100") %>
+ <%= f.radio_button(:dominio, "100") %>
+
+
   <%= error_span(@pea_avance[:dominio]) %>
-  <%= f.input :oper_ejecutar %>
+  <%= f.input :oper_ejecutar, label: 'Operaciones por ejecutar' %>
   <%= error_span(@pea_avance[:oper_ejecutar]) %>
-  <%= f.input :oper_seminario %>
+  <%= f.input :oper_seminario, label: 'Operaciones seminario' %>
   <%= error_span(@pea_avance[:oper_seminario]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
