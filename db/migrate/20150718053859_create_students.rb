@@ -5,6 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :nombreS
       t.string :ApellidoPaterno
       t.string :ApellidoMaterno
+      t.references :company, index: true, foreign_key: true
 
       t.timestamps null: false
     end

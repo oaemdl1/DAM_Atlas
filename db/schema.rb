@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718053311) do
+ActiveRecord::Schema.define(version: 20150718053859) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "specialty_id",    limit: 4
@@ -113,9 +113,12 @@ ActiveRecord::Schema.define(version: 20150718053311) do
     t.string   "nombreS",         limit: 255
     t.string   "ApellidoPaterno", limit: 255
     t.string   "ApellidoMaterno", limit: 255
+    t.integer  "company_id",      limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "students", ["company_id"], name: "index_students_on_company_id", using: :btree
 
   create_table "supervisors", force: :cascade do |t|
     t.integer  "company_id",      limit: 4
@@ -140,5 +143,6 @@ ActiveRecord::Schema.define(version: 20150718053311) do
   add_foreign_key "instructors", "companies"
   add_foreign_key "pea_avances", "peas"
   add_foreign_key "peas", "specialties"
+  add_foreign_key "students", "companies"
   add_foreign_key "supervisors", "companies"
 end

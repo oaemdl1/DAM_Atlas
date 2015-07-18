@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :district %>
+    <%= f.association :district, :label_method => :detalle, :value_method => :id %>
     <%= f.input :razonsocial %>
     <%= f.input :ruc %>
     <%= f.input :telefonofijo %>

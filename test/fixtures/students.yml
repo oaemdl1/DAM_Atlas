@@ -5,9 +5,11 @@ one:
   nombreS: MyString
   ApellidoPaterno: MyString
   ApellidoMaterno: MyString
+  company_id: 
 
 two:
   nombreP: MyString
   nombreS: MyString
   ApellidoPaterno: MyString
   ApellidoMaterno: MyString
+  company_id: 
