@@ -2,10 +2,19 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :pea %>
-    <%= f.input :dominio %>
-    <%= f.input :oper_ejecutar %>
-    <%= f.input :oper_seminario %>
+    <%= f.association :pea, :label_method => :detalle, :value_method => :id  %>
+Dominio:
+<%= f.label(:dominio, "25") %>
+ <%= f.radio_button(:dominio, "25") %>
+ <%= f.label(:dominio, "50") %>
+ <%= f.radio_button(:dominio, "50")%>
+ <%= f.label(:dominio, "75") %>
+ <%= f.radio_button(:dominio, "75")%>
+ <%= f.label(:dominio, "100") %>
+ <%= f.radio_button(:dominio, "100")%>
+
+    <%= f.input :oper_ejecutar, :label => "Operaciones por ejecutar"  %>
+    <%= f.input :oper_seminario, :label => "Operaciones seminario" %>
     <%= f.association :informe %>
   </div>
 

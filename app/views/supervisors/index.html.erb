@@ -7,13 +7,7 @@
     <tr>
       <th>Company</th>
       <th>Nombrep</th>
-      <th>Nombres</th>
       <th>Apellidopaterno</th>
-      <th>Apellidomaterno</th>
-      <th>Dni</th>
-      <th>Telefonos</th>
-      <th>Correopersonal</th>
-      <th>Eliminado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,13 +17,7 @@
       <tr>
         <td><%= supervisor.company %></td>
         <td><%= supervisor.nombrep %></td>
-        <td><%= supervisor.nombres %></td>
         <td><%= supervisor.apellidopaterno %></td>
-        <td><%= supervisor.apellidomaterno %></td>
-        <td><%= supervisor.dni %></td>
-        <td><%= supervisor.telefonos %></td>
-        <td><%= supervisor.correopersonal %></td>
-        <td><%= supervisor.eliminado %></td>
         <td><%= link_to 'Show', supervisor %></td>
         <td><%= link_to 'Edit', edit_supervisor_path(supervisor) %></td>
         <td><%= link_to 'Destroy', supervisor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
