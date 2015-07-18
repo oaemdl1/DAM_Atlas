@@ -1,1 +1,0 @@
-json.extract! @business, :id, :razonsocial, :ruc, :telefonofijo, :telefonomovil, :partidaregistral, :representantelegal, :correo, :direccion, :linkgooglemaps, :eliminado, :districts_id, :created_at, :updated_at

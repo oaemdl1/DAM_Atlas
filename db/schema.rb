@@ -11,12 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717201646) do
+ActiveRecord::Schema.define(version: 0) do
 
-  create_table "districts", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "businesses", force: :cascade do |t|
+    t.text     "razonsocial",        limit: 65535
+    t.string   "ruc",                limit: 255
+    t.string   "telefonofijo",       limit: 255
+    t.string   "telefonomovil",      limit: 255
+    t.string   "partidaregistral",   limit: 255
+    t.string   "representantelegal", limit: 255
+    t.string   "correo",             limit: 255
+    t.string   "direccion",          limit: 255
+    t.string   "linkgooglemaps",     limit: 255
+    t.integer  "eliminado",          limit: 4
+    t.integer  "districts_id",       limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
+
+  add_index "businesses", ["districts_id"], name: "index_businesses_on_districts_id", using: :btree
 
 end
