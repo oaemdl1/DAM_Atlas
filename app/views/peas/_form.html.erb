@@ -1,5 +1,5 @@
 <%= simple_form_for @pea, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :specialty_id %>
+  <%= f.association :specialty , :label_method => :detalle, :value_method => :id %>
   <%= error_span(@pea[:specialty_id]) %>
   <%= f.input :ciclo %>
   <%= error_span(@pea[:ciclo]) %>
