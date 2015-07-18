@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :positions
+  resources :specialties
   resources :blocks
   resources :reasons
   resources :positions
