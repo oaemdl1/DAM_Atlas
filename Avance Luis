@@ -20,5 +20,15 @@ git push origin master
 git add .
 git commit -am "Home controller"
 git push origin master
------OK
------OK
+
+rails g scaffold peas specialty:references ciclo:string detalle:text
+rails g scaffold pea_avances pea:references dominio:string oper_ejecutar:boolean oper_seminario:boolean
+
+rails g bootstrap:themed peas
+rails g bootstrap:themed pea_avances
+
+/*
+mysql -u root senati-web_development
+
+drop table businesses;
+*/

@@ -23,6 +23,12 @@
 
   add_index "blocks", ["specialty_id"], name: "index_blocks_on_specialty_id", using: :btree
   add_foreign_key "blocks", "specialties"
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "detalle",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
   
   create_table "companies", force: :cascade do |t|
     t.integer  "district_id",        limit: 4
@@ -43,11 +49,28 @@
   add_index "companies", ["district_id"], name: "index_companies_on_district_id", using: :btree
   add_foreign_key "companies", "districts"
 
-  create_table "districts", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "pea_avances", force: :cascade do |t|
+    t.integer  "pea_id",         limit: 4
+    t.string   "dominio",        limit: 255
+    t.boolean  "oper_ejecutar",  limit: 1
+    t.boolean  "oper_seminario", limit: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
+
+  add_index "pea_avances", ["pea_id"], name: "index_pea_avances_on_pea_id", using: :btree
+  add_foreign_key "pea_avances", "peas"
+
+  create_table "peas", force: :cascade do |t|
+    t.integer  "specialty_id", limit: 4
+    t.string   "ciclo",        limit: 255
+    t.text     "detalle",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "peas", ["specialty_id"], name: "index_peas_on_specialty_id", using: :btree
+  add_foreign_key "peas", "specialties"
 
   create_table "positions", force: :cascade do |t|
     t.string   "detalle",    limit: 255
@@ -66,4 +89,3 @@
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
-
