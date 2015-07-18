@@ -1,0 +1,25 @@
+<%= simple_form_for(@informe) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :jefe %>
+    <%= f.input :fecha_visita %>
+    <%= f.association :supervisor %>
+    <%= f.association :company %>
+    <%= f.association :student %>
+    <%= f.input :aspectos_monitor %>
+    <%= f.input :aspectos_estudiante %>
+    <%= f.input :problemas_seguridad %>
+    <%= f.input :soluciones_seguridad %>
+    <%= f.input :problemas_estudiante %>
+    <%= f.input :soluciones_estudiante %>
+    <%= f.input :problemas_monitor %>
+    <%= f.input :soluciones_monitor %>
+    <%= f.input :problemas_puesto %>
+    <%= f.input :soluciones_puesto %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

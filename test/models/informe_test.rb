@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PeaAvanceTest < ActiveSupport::TestCase
+class InformeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

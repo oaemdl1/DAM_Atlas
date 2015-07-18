@@ -5,6 +5,7 @@ class CreatePeaAvances < ActiveRecord::Migration
       t.string :dominio
       t.boolean :oper_ejecutar
       t.boolean :oper_seminario
+      t.references :informe, index: true, foreign_key: true
 
       t.timestamps null: false
     end

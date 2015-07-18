@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :pea_avances
+  resources :informes
   resources :students
   resources :students
   resources :instructors
   resources :blockssupervisors
   resources :supervisors
   resources :companies
-  resources :pea_avances
   resources :peas
   resources :blocks
   resources :reasons

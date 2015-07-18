@@ -5,17 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>District</th>
       <th>Razonsocial</th>
       <th>Ruc</th>
-      <th>Telefonofijo</th>
-      <th>Telefonomovil</th>
-      <th>Partidaregistral</th>
-      <th>Representantelegal</th>
-      <th>Correo</th>
-      <th>Direccion</th>
-      <th>Linkgooglemaps</th>
-      <th>Eliminado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,17 +14,8 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= company.district %></td>
         <td><%= company.razonsocial %></td>
         <td><%= company.ruc %></td>
-        <td><%= company.telefonofijo %></td>
-        <td><%= company.telefonomovil %></td>
-        <td><%= company.partidaregistral %></td>
-        <td><%= company.representantelegal %></td>
-        <td><%= company.correo %></td>
-        <td><%= company.direccion %></td>
-        <td><%= company.linkgooglemaps %></td>
-        <td><%= company.eliminado %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>

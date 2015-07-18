@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jefe: MyString
+  fecha_visita: 2015-07-18
+  supervisor_id: 
+  company_id: 
+  student_id: 
+  aspectos_monitor: MyString
+  aspectos_estudiante: MyString
+  problemas_seguridad: MyText
+  soluciones_seguridad: MyText
+  problemas_estudiante: MyText
+  soluciones_estudiante: MyText
+  problemas_monitor: MyText
+  soluciones_monitor: MyText
+  problemas_puesto: MyText
+  soluciones_puesto: MyText
+
+two:
+  jefe: MyString
+  fecha_visita: 2015-07-18
+  supervisor_id: 
+  company_id: 
+  student_id: 
+  aspectos_monitor: MyString
+  aspectos_estudiante: MyString
+  problemas_seguridad: MyText
+  soluciones_seguridad: MyText
+  problemas_estudiante: MyText
+  soluciones_estudiante: MyText
+  problemas_monitor: MyText
+  soluciones_monitor: MyText
+  problemas_puesto: MyText
+  soluciones_puesto: MyText

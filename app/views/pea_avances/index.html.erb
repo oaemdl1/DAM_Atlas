@@ -1,42 +1,35 @@
-<%- model_class = PeaAvance -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pea Avances</h1>
+
+<table>
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:pea_id) %></th>
-      <th><%= model_class.human_attribute_name(:dominio) %></th>
-      <th><%= model_class.human_attribute_name(:oper_ejecutar) %></th>
-      <th><%= model_class.human_attribute_name(:oper_seminario) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Pea</th>
+      <th>Dominio</th>
+      <th>Oper ejecutar</th>
+      <th>Oper seminario</th>
+      <th>Informe</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
+
   <tbody>
     <% @pea_avances.each do |pea_avance| %>
       <tr>
-        <td><%= link_to pea_avance.id, pea_avance_path(pea_avance) %></td>
-        <td><%= pea_avance.pea_id %></td>
+        <td><%= pea_avance.pea %></td>
         <td><%= pea_avance.dominio %></td>
         <td><%= pea_avance.oper_ejecutar %></td>
         <td><%= pea_avance.oper_seminario %></td>
-        <td><%=l pea_avance.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_pea_avance_path(pea_avance), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      pea_avance_path(pea_avance),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <td><%= pea_avance.informe %></td>
+        <td><%= link_to 'Show', pea_avance %></td>
+        <td><%= link_to 'Edit', edit_pea_avance_path(pea_avance) %></td>
+        <td><%= link_to 'Destroy', pea_avance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_pea_avance_path,
-            :class => 'btn btn-primary' %>
+<br>
+
+<%= link_to 'New Pea avance', new_pea_avance_path %>

@@ -7,7 +7,7 @@
   <%= error_span(@student[:ApellidoPaterno]) %>
   <%= f.input :ApellidoMaterno %>
   <%= error_span(@student[:ApellidoMaterno]) %>
-  <%= f.association :company %>
+  <%= f.association :company, :label_method => :razonsocial, :value_method => :id %>
   <%= error_span(@student[:company_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

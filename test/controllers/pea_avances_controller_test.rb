@@ -18,7 +18,7 @@ class PeaAvancesControllerTest < ActionController::TestCase
 
   test "should create pea_avance" do
     assert_difference('PeaAvance.count') do
-      post :create, pea_avance: { dominio: @pea_avance.dominio, oper_ejecutar: @pea_avance.oper_ejecutar, oper_seminario: @pea_avance.oper_seminario, pea_id: @pea_avance.pea_id }
+      post :create, pea_avance: { dominio: @pea_avance.dominio, informe_id: @pea_avance.informe_id, oper_ejecutar: @pea_avance.oper_ejecutar, oper_seminario: @pea_avance.oper_seminario, pea_id: @pea_avance.pea_id }
     end
 
     assert_redirected_to pea_avance_path(assigns(:pea_avance))
@@ -35,7 +35,7 @@ class PeaAvancesControllerTest < ActionController::TestCase
   end
 
   test "should update pea_avance" do
-    patch :update, id: @pea_avance, pea_avance: { dominio: @pea_avance.dominio, oper_ejecutar: @pea_avance.oper_ejecutar, oper_seminario: @pea_avance.oper_seminario, pea_id: @pea_avance.pea_id }
+    patch :update, id: @pea_avance, pea_avance: { dominio: @pea_avance.dominio, informe_id: @pea_avance.informe_id, oper_ejecutar: @pea_avance.oper_ejecutar, oper_seminario: @pea_avance.oper_seminario, pea_id: @pea_avance.pea_id }
     assert_redirected_to pea_avance_path(assigns(:pea_avance))
   end
 

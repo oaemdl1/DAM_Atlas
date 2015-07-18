@@ -69,6 +69,6 @@ class PeaAvancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pea_avance_params
-      params.require(:pea_avance).permit(:pea_id, :dominio, :oper_ejecutar, :oper_seminario)
+      params.require(:pea_avance).permit(:pea_id, :dominio, :oper_ejecutar, :oper_seminario, :informe_id)
     end
 end
