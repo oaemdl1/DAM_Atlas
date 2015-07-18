@@ -1,16 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-<<<<<<< HEAD
   resources :companies
-  resources :companies
-=======
-=======
   resources :pea_avances
   resources :peas
->>>>>>> db1c8bf0679b38483cf43d0d44b982f620cd46f9
-  resources :positions
-  resources :specialties
->>>>>>> a83c5415045921aaaee65c10e23ef9b3ad82763e
   resources :blocks
   resources :reasons
   resources :positions

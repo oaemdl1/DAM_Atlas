@@ -11,6 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20150718033207) do
+
   create_table "blocks", force: :cascade do |t|
     t.integer  "specialty_id",    limit: 4
     t.string   "semestre",        limit: 255
@@ -22,14 +24,7 @@
   end
 
   add_index "blocks", ["specialty_id"], name: "index_blocks_on_specialty_id", using: :btree
-  add_foreign_key "blocks", "specialties"
 
-  create_table "districts", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-  
   create_table "companies", force: :cascade do |t|
     t.integer  "district_id",        limit: 4
     t.text     "razonsocial",        limit: 65535
@@ -47,7 +42,12 @@
   end
 
   add_index "companies", ["district_id"], name: "index_companies_on_district_id", using: :btree
-  add_foreign_key "companies", "districts"
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "detalle",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "pea_avances", force: :cascade do |t|
     t.integer  "pea_id",         limit: 4
@@ -59,7 +59,6 @@
   end
 
   add_index "pea_avances", ["pea_id"], name: "index_pea_avances_on_pea_id", using: :btree
-  add_foreign_key "pea_avances", "peas"
 
   create_table "peas", force: :cascade do |t|
     t.integer  "specialty_id", limit: 4
@@ -70,7 +69,6 @@
   end
 
   add_index "peas", ["specialty_id"], name: "index_peas_on_specialty_id", using: :btree
-  add_foreign_key "peas", "specialties"
 
   create_table "positions", force: :cascade do |t|
     t.string   "detalle",    limit: 255
@@ -89,3 +87,9 @@
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_foreign_key "blocks", "specialties"
+  add_foreign_key "companies", "districts"
+  add_foreign_key "pea_avances", "peas"
+  add_foreign_key "peas", "specialties"
+end
