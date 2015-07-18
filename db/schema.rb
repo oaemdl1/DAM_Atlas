@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150718012809) do
 
   create_table "businesses", force: :cascade do |t|
     t.text     "razonsocial",        limit: 65535
@@ -30,5 +30,11 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_index "businesses", ["districts_id"], name: "index_businesses_on_districts_id", using: :btree
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "detalle",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
 end
