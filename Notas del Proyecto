@@ -1,0 +1,10 @@
+revisar :
+  - Senati.sql   --> script mySQL
+  - Avance Omar  --> los comandos realizados hasta el momento
+  - Comandos GIT
+  
+
+Omar :
+  - creado clases : Distritos (districts) , Carreras (specialties), 
+                    Puestos(positions), MotivosCese(reasons), Bloques(blocks)
+  - agregó las gemas
