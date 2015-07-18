@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
-
   resources :companies
-
-
   resources :pea_avances
   resources :peas
-
-
-  resources :specialties
-
   resources :blocks
   resources :reasons
   resources :positions
-
+  resources :specialties
   resources :districts
   resources :students
   # The priority is based upon order of creation: first created -> highest priority.
