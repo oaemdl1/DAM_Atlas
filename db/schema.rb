@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718033207) do
+ActiveRecord::Schema.define(version: 20150718043613) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "specialty_id",    limit: 4
@@ -88,8 +88,25 @@ ActiveRecord::Schema.define(version: 20150718033207) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "supervisors", force: :cascade do |t|
+    t.integer  "company_id",      limit: 4
+    t.string   "nombrep",         limit: 255
+    t.string   "nombres",         limit: 255
+    t.string   "apellidopaterno", limit: 255
+    t.string   "apellidomaterno", limit: 255
+    t.string   "dni",             limit: 255
+    t.string   "telefonos",       limit: 255
+    t.string   "correopersonal",  limit: 255
+    t.boolean  "eliminado",       limit: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "supervisors", ["company_id"], name: "index_supervisors_on_company_id", using: :btree
+
   add_foreign_key "blocks", "specialties"
   add_foreign_key "companies", "districts"
   add_foreign_key "pea_avances", "peas"
   add_foreign_key "peas", "specialties"
+  add_foreign_key "supervisors", "companies"
 end

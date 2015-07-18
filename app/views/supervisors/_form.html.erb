@@ -1,0 +1,19 @@
+<%= simple_form_for(@supervisor) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :company %>
+    <%= f.input :nombrep %>
+    <%= f.input :nombres %>
+    <%= f.input :apellidopaterno %>
+    <%= f.input :apellidomaterno %>
+    <%= f.input :dni %>
+    <%= f.input :telefonos %>
+    <%= f.input :correopersonal %>
+    <%= f.input :eliminado %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
