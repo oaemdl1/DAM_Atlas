@@ -1,0 +1,14 @@
+<%= simple_form_for @pea_avance, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :pea_id %>
+  <%= error_span(@pea_avance[:pea_id]) %>
+  <%= f.input :dominio %>
+  <%= error_span(@pea_avance[:dominio]) %>
+  <%= f.input :oper_ejecutar %>
+  <%= error_span(@pea_avance[:oper_ejecutar]) %>
+  <%= f.input :oper_seminario %>
+  <%= error_span(@pea_avance[:oper_seminario]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pea_avances_path, :class => 'btn btn-default' %>
+<% end %>

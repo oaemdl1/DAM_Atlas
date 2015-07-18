@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  specialty_id: 
+  ciclo: MyString
+  detalle: MyText
+
+two:
+  specialty_id: 
+  ciclo: MyString
+  detalle: MyText

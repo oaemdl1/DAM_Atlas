@@ -1,0 +1,12 @@
+<%= simple_form_for @pea, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :specialty_id %>
+  <%= error_span(@pea[:specialty_id]) %>
+  <%= f.input :ciclo %>
+  <%= error_span(@pea[:ciclo]) %>
+  <%= f.input :detalle %>
+  <%= error_span(@pea[:detalle]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                peas_path, :class => 'btn btn-default' %>
+<% end %>

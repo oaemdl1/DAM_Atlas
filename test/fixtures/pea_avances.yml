@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pea_id: 
+  dominio: MyString
+  oper_ejecutar: false
+  oper_seminario: false
+
+two:
+  pea_id: 
+  dominio: MyString
+  oper_ejecutar: false
+  oper_seminario: false

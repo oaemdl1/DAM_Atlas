@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pea_avances
+  resources :peas
   resources :positions
   resources :specialties
   resources :blocks

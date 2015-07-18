@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718014557) do
+ActiveRecord::Schema.define(version: 20150718033207) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "specialty_id",    limit: 4
@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20150718014557) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "pea_avances", force: :cascade do |t|
+    t.integer  "pea_id",         limit: 4
+    t.string   "dominio",        limit: 255
+    t.boolean  "oper_ejecutar",  limit: 1
+    t.boolean  "oper_seminario", limit: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "pea_avances", ["pea_id"], name: "index_pea_avances_on_pea_id", using: :btree
+
+  create_table "peas", force: :cascade do |t|
+    t.integer  "specialty_id", limit: 4
+    t.string   "ciclo",        limit: 255
+    t.text     "detalle",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "peas", ["specialty_id"], name: "index_peas_on_specialty_id", using: :btree
 
   create_table "positions", force: :cascade do |t|
     t.string   "detalle",    limit: 255
@@ -50,4 +71,6 @@ ActiveRecord::Schema.define(version: 20150718014557) do
   end
 
   add_foreign_key "blocks", "specialties"
+  add_foreign_key "pea_avances", "peas"
+  add_foreign_key "peas", "specialties"
 end
