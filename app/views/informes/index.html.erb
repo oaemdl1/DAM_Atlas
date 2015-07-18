@@ -19,9 +19,9 @@
       <tr>
         <td><%= informe.jefe %></td>
         <td><%= informe.fecha_visita %></td>
-        <td><%= informe.supervisor %></td>
-        <td><%= informe.company %></td>
-        <td><%= informe.student %></td>
+        <td><%= informe.supervisor.nombrep %> <%= informe.supervisor.apellidopaterno %></td>
+        <td><%= informe.company.razonsocial %></td>
+        <td><%= informe.student.nombreP %> <%= informe.student.ApellidoPaterno %></td>
         <td><%= link_to 'Show', informe %></td>
         <td><%= link_to 'Edit', edit_informe_path(informe) %></td>
         <td><%= link_to 'Destroy', informe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
