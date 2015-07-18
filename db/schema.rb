@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718043613) do
+ActiveRecord::Schema.define(version: 20150718044236) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "specialty_id",    limit: 4
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20150718043613) do
   end
 
   add_index "blocks", ["specialty_id"], name: "index_blocks_on_specialty_id", using: :btree
+
+  create_table "blockssupervisors", force: :cascade do |t|
+    t.integer  "supervisor_id", limit: 4
+    t.integer  "block_id",      limit: 4
+    t.string   "idtecsem",      limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "blockssupervisors", ["block_id"], name: "index_blockssupervisors_on_block_id", using: :btree
+  add_index "blockssupervisors", ["supervisor_id"], name: "index_blockssupervisors_on_supervisor_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.integer  "district_id",        limit: 4
@@ -105,6 +116,8 @@ ActiveRecord::Schema.define(version: 20150718043613) do
   add_index "supervisors", ["company_id"], name: "index_supervisors_on_company_id", using: :btree
 
   add_foreign_key "blocks", "specialties"
+  add_foreign_key "blockssupervisors", "blocks"
+  add_foreign_key "blockssupervisors", "supervisors"
   add_foreign_key "companies", "districts"
   add_foreign_key "pea_avances", "peas"
   add_foreign_key "peas", "specialties"
