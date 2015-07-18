@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  specialty_id: 
+  semestre: MyString
+  ciclo_academico: MyString
+  bloque: MyString
+  dia_semana: MyString
+
+two:
+  specialty_id: 
+  semestre: MyString
+  ciclo_academico: MyString
+  bloque: MyString
+  dia_semana: MyString

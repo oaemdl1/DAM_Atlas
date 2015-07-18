@@ -1,0 +1,15 @@
+<%= simple_form_for(@block) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :specialty %>
+    <%= f.input :semestre %>
+    <%= f.input :ciclo_academico %>
+    <%= f.input :bloque %>
+    <%= f.input :dia_semana %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

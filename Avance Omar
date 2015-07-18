@@ -1,3 +1,6 @@
+// agregar las gemas
+bundle
+
 sudo service mysql start
 rails s
 rails s -p $PORT -b $IP
@@ -16,7 +19,8 @@ annotate
 rails g bootstrap:install less
 rails g simple_form:install --bootstrap
 rails g bootstrap:layout application
-rails g controller Home index
 
-bundle
 
+git add .
+git commit -am "Mensaje"
+git push origin master

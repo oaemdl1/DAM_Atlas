@@ -43,4 +43,19 @@ group :development, :test do
   gem 'spring'
 end
 
+#Documentación
 gem 'annotate'
+
+# Form anagement gem
+gem 'simple_form'
+
+# Bootstrap frontend framework gem
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
+# Authentication gem
+gem 'devise'
+
+#Management gem
+gem 'rails_admin'
