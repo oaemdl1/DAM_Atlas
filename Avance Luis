@@ -1,0 +1,24 @@
+
+bundle
+
+sudo service mysql start
+rails s
+rails s -p $PORT -b $IP
+
+rake db:create
+rails g controller Home index
+rails g scaffold districts detalle:string
+rails g scaffold specialties detalle:string
+rails g scaffold positions detalle:string
+rails g scaffold reasons detalle:string
+rails g scaffold block specialty:references semestre:string ciclo_academico:string bloque:string dia_semana:string
+rake db:migrate
+
+git add "Avance Luis"
+git commit -am "Created Archivo Luis"
+git push origin master
+git add .
+git commit -am "Home controller"
+git push origin master
+-----OK
+-----OK

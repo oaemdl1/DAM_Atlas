@@ -134,13 +134,13 @@ create table InformesSeguimiento ( 					/* - */
   PDAprendiz nchar(30) not null, 
   SRAprendiz nchar(30) not null );
 
-create table PEA (
+create table PEA ( /*pea - peas*/
   idOperacion int primary key auto_increment,
   idCarrera int references Carreras,
   CicloAcademico char(1) not null,
   Detalle nchar(50) );
 
-create table AvancePEA (
+create table AvancePEA ( /* pea_avance - pea_avances*/
   idInformeSeguimiento int references InformesSeguimiento,
   idOperacion int references PEA,
   Dominio char(1) not null,

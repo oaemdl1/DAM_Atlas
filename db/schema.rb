@@ -11,8 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718031434) do
-
   create_table "blocks", force: :cascade do |t|
     t.integer  "specialty_id",    limit: 4
     t.string   "semestre",        limit: 255
@@ -24,7 +22,8 @@ ActiveRecord::Schema.define(version: 20150718031434) do
   end
 
   add_index "blocks", ["specialty_id"], name: "index_blocks_on_specialty_id", using: :btree
-
+  add_foreign_key "blocks", "specialties"
+  
   create_table "companies", force: :cascade do |t|
     t.integer  "district_id",        limit: 4
     t.text     "razonsocial",        limit: 65535
@@ -42,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150718031434) do
   end
 
   add_index "companies", ["district_id"], name: "index_companies_on_district_id", using: :btree
+  add_foreign_key "companies", "districts"
 
   create_table "districts", force: :cascade do |t|
     t.string   "detalle",    limit: 255
@@ -67,6 +67,3 @@ ActiveRecord::Schema.define(version: 20150718031434) do
     t.datetime "updated_at",             null: false
   end
 
-  add_foreign_key "blocks", "specialties"
-  add_foreign_key "companies", "districts"
-end

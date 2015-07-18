@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   resources :companies
   resources :companies
+=======
+  resources :positions
+  resources :specialties
+>>>>>>> a83c5415045921aaaee65c10e23ef9b3ad82763e
   resources :blocks
   resources :reasons
   resources :positions
