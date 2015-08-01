@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :districts
   resources :app_users
   devise_for :users
   resources :app_user_types
