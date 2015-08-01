@@ -1,0 +1,22 @@
+<%= simple_form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :company_name, disabled: true %>
+  <%= error_span(@company[:company_name]) %>
+  <%= f.input :ruc, disabled: true %>
+  <%= error_span(@company[:ruc]) %>
+  <%= f.input :address, disabled: true %>
+  <%= error_span(@company[:address]) %>
+  <%= f.input :phones, disabled: true %>
+  <%= error_span(@company[:phones]) %>
+  <%= f.input :latitude %>
+   Ejemplo: -12.0551118
+  <%= error_span(@company[:latitude]) %>
+  <%= f.input :longitude %>
+   Ejemplo: -12.0551118
+  <%= error_span(@company[:longitude]) %>
+  <%= f.association :district, :label_method => :detalle, :value_method => :id, disabled: true %>
+  <%= error_span(@company[:district_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                companies_path, :class => 'btn btn-default' %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801211544) do
+ActiveRecord::Schema.define(version: 20150801211753) do
 
   create_table "app_user_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20150801211544) do
   end
 
   add_index "app_users", ["app_user_type_id"], name: "index_app_users_on_app_user_type_id", using: :btree
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "company_name", limit: 255
+    t.string   "ruc",          limit: 255
+    t.string   "address",      limit: 255
+    t.string   "phones",       limit: 255
+    t.string   "latitude",     limit: 255
+    t.string   "longitude",    limit: 255
+    t.integer  "district_id",  limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "companies", ["district_id"], name: "index_companies_on_district_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -72,5 +86,6 @@ ActiveRecord::Schema.define(version: 20150801211544) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "app_users", "app_user_types"
+  add_foreign_key "companies", "districts"
   add_foreign_key "supervisors", "users"
 end

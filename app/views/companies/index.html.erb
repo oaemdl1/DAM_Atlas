@@ -1,0 +1,45 @@
+<%- model_class = Company -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:company_name) %></th>
+      <th><%= model_class.human_attribute_name(:ruc) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:phones) %></th>
+      <th><%= model_class.human_attribute_name(:latitude) %>, <%= model_class.human_attribute_name(:longitude) %></th>
+      <th><%= model_class.human_attribute_name(:district_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= link_to company.id, company_path(company) %></td>
+        <td><%= company.company_name %></td>
+        <td><%= company.ruc %></td>
+        <td><%= company.address %></td>
+        <td><%= company.phones %></td>
+          
+          <% if company.latitude != nil && company.latitude != "" && company.longitude != nil && company.longitude != "" %>
+              <td>
+              <a target="_blank" href="http://maps.google.com/maps?z=10&t=m&q=loc:<%=company.coordinate%>">
+                  <%= image_tag("gmap.png", :border => 0, :title => "Ubicar en mapa") %>
+              </a>
+              </td>
+          <%else%>
+              <td>-</td>
+          <%end%>
+
+        <td><%= company.district.name %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_company_path(company), :class => 'btn btn-default btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
