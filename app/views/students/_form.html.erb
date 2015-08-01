@@ -1,0 +1,14 @@
+<%= simple_form_for @student, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@student[:name]) %>
+  <%= f.input :last_name %>
+  <%= error_span(@student[:last_name]) %>
+  <%= f.input :specialty_id %>
+  <%= error_span(@student[:specialty_id]) %>
+  <%= f.input :company_id %>
+  <%= error_span(@student[:company_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                students_path, :class => 'btn btn-default' %>
+<% end %>

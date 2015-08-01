@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801211753) do
+ActiveRecord::Schema.define(version: 20150801212905) do
 
   create_table "app_user_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(version: 20150801211753) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "last_name",    limit: 255
+    t.integer  "specialty_id", limit: 4
+    t.integer  "company_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "students", ["company_id"], name: "index_students_on_company_id", using: :btree
+  add_index "students", ["specialty_id"], name: "index_students_on_specialty_id", using: :btree
+
   create_table "supervisors", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "last_name",  limit: 255
@@ -87,5 +99,7 @@ ActiveRecord::Schema.define(version: 20150801211753) do
 
   add_foreign_key "app_users", "app_user_types"
   add_foreign_key "companies", "districts"
+  add_foreign_key "students", "companies"
+  add_foreign_key "students", "specialties"
   add_foreign_key "supervisors", "users"
 end
