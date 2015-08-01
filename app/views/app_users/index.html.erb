@@ -10,6 +10,8 @@
       <th><%= model_class.human_attribute_name(:password) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:app_user_type_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,6 +23,8 @@
         <td><%= app_user.password %></td>
         <td><%= app_user.name %></td>
         <td><%= app_user.last_name %></td>
+        <td><%= app_user.app_user_type_id %></td>
+        <td><%=l app_user.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_app_user_path(app_user), :class => 'btn btn-default btn-xs' %>

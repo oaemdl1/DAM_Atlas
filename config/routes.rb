@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :app_users
   devise_for :users
   resources :app_user_types
-  resources :students
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
