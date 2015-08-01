@@ -17,6 +17,7 @@ rake db:migrate
 git add "Avance Luis"
 git commit -am "Created Archivo Luis"
 git push origin master
+
 git add .
 git commit -am "Home controller"
 git push origin master
@@ -28,7 +29,9 @@ rails g bootstrap:themed peas
 rails g bootstrap:themed pea_avances
 
 /*
+rails destroy scaffold informes 
+
 mysql -u root senati-web_development
 
-drop table businesses;
+drop table informes ;
 */

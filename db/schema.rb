@@ -11,168 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718061300) do
+ActiveRecord::Schema.define(version: 20150801193520) do
 
-  create_table "blocks", force: :cascade do |t|
-    t.integer  "specialty_id",    limit: 4
-    t.string   "semestre",        limit: 255
-    t.string   "ciclo_academico", limit: 255
-    t.string   "bloque",          limit: 255
-    t.string   "dia_semana",      limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  add_index "blocks", ["specialty_id"], name: "index_blocks_on_specialty_id", using: :btree
-
-  create_table "blockssupervisors", force: :cascade do |t|
-    t.integer  "supervisor_id", limit: 4
-    t.integer  "block_id",      limit: 4
-    t.string   "idtecsem",      limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "blockssupervisors", ["block_id"], name: "index_blockssupervisors_on_block_id", using: :btree
-  add_index "blockssupervisors", ["supervisor_id"], name: "index_blockssupervisors_on_supervisor_id", using: :btree
-
-  create_table "companies", force: :cascade do |t|
-    t.integer  "district_id",        limit: 4
-    t.text     "razonsocial",        limit: 65535
-    t.string   "ruc",                limit: 255
-    t.string   "telefonofijo",       limit: 255
-    t.string   "telefonomovil",      limit: 255
-    t.string   "partidaregistral",   limit: 255
-    t.string   "representantelegal", limit: 255
-    t.string   "correo",             limit: 255
-    t.string   "direccion",          limit: 255
-    t.string   "linkgooglemaps",     limit: 255
-    t.integer  "eliminado",          limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
-
-  add_index "companies", ["district_id"], name: "index_companies_on_district_id", using: :btree
-
-  create_table "districts", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
+  create_table "app_user_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  create_table "informes", force: :cascade do |t|
-    t.string   "jefe",                  limit: 255
-    t.date     "fecha_visita"
-    t.integer  "supervisor_id",         limit: 4
-    t.integer  "company_id",            limit: 4
-    t.integer  "student_id",            limit: 4
-    t.string   "aspectos_monitor",      limit: 255
-    t.string   "aspectos_estudiante",   limit: 255
-    t.text     "problemas_seguridad",   limit: 65535
-    t.text     "soluciones_seguridad",  limit: 65535
-    t.text     "problemas_estudiante",  limit: 65535
-    t.text     "soluciones_estudiante", limit: 65535
-    t.text     "problemas_monitor",     limit: 65535
-    t.text     "soluciones_monitor",    limit: 65535
-    t.text     "problemas_puesto",      limit: 65535
-    t.text     "soluciones_puesto",     limit: 65535
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+  create_table "app_users", force: :cascade do |t|
+    t.string   "login",            limit: 255
+    t.string   "password",         limit: 255
+    t.string   "name",             limit: 255
+    t.string   "last_name",        limit: 255
+    t.integer  "app_user_type_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
-  add_index "informes", ["company_id"], name: "index_informes_on_company_id", using: :btree
-  add_index "informes", ["student_id"], name: "index_informes_on_student_id", using: :btree
-  add_index "informes", ["supervisor_id"], name: "index_informes_on_supervisor_id", using: :btree
+  add_index "app_users", ["app_user_type_id"], name: "index_app_users_on_app_user_type_id", using: :btree
 
-  create_table "instructors", force: :cascade do |t|
-    t.date     "fecha_visita"
-    t.integer  "company_id",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
-  add_index "instructors", ["company_id"], name: "index_instructors_on_company_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "pea_avances", force: :cascade do |t|
-    t.integer  "pea_id",         limit: 4
-    t.string   "dominio",        limit: 255
-    t.boolean  "oper_ejecutar",  limit: 1
-    t.boolean  "oper_seminario", limit: 1
-    t.integer  "informe_id",     limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "pea_avances", ["informe_id"], name: "index_pea_avances_on_informe_id", using: :btree
-  add_index "pea_avances", ["pea_id"], name: "index_pea_avances_on_pea_id", using: :btree
-
-  create_table "peas", force: :cascade do |t|
-    t.integer  "specialty_id", limit: 4
-    t.string   "ciclo",        limit: 255
-    t.text     "detalle",      limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "peas", ["specialty_id"], name: "index_peas_on_specialty_id", using: :btree
-
-  create_table "positions", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "reasons", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "specialties", force: :cascade do |t|
-    t.string   "detalle",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "students", force: :cascade do |t|
-    t.string   "nombreP",         limit: 255
-    t.string   "nombreS",         limit: 255
-    t.string   "ApellidoPaterno", limit: 255
-    t.string   "ApellidoMaterno", limit: 255
-    t.integer  "company_id",      limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  add_index "students", ["company_id"], name: "index_students_on_company_id", using: :btree
-
-  create_table "supervisors", force: :cascade do |t|
-    t.integer  "company_id",      limit: 4
-    t.string   "nombrep",         limit: 255
-    t.string   "nombres",         limit: 255
-    t.string   "apellidopaterno", limit: 255
-    t.string   "apellidomaterno", limit: 255
-    t.string   "dni",             limit: 255
-    t.string   "telefonos",       limit: 255
-    t.string   "correopersonal",  limit: 255
-    t.boolean  "eliminado",       limit: 1
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  add_index "supervisors", ["company_id"], name: "index_supervisors_on_company_id", using: :btree
-
-  add_foreign_key "blocks", "specialties"
-  add_foreign_key "blockssupervisors", "blocks"
-  add_foreign_key "blockssupervisors", "supervisors"
-  add_foreign_key "companies", "districts"
-  add_foreign_key "informes", "companies"
-  add_foreign_key "informes", "students"
-  add_foreign_key "informes", "supervisors"
-  add_foreign_key "instructors", "companies"
-  add_foreign_key "pea_avances", "informes"
-  add_foreign_key "pea_avances", "peas"
-  add_foreign_key "peas", "specialties"
-  add_foreign_key "students", "companies"
-  add_foreign_key "supervisors", "companies"
+  add_foreign_key "app_users", "app_user_types"
 end

@@ -1,18 +1,8 @@
 Rails.application.routes.draw do
-  resources :pea_avances
-  resources :informes
+  resources :app_users
+  devise_for :users
+  resources :app_user_types
   resources :students
-  resources :students
-  resources :instructors
-  resources :blockssupervisors
-  resources :supervisors
-  resources :companies
-  resources :peas
-  resources :blocks
-  resources :reasons
-  resources :positions
-  resources :specialties
-  resources :districts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
