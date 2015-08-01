@@ -8,8 +8,8 @@
   <dd><%= @supervisor.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
   <dd><%= @supervisor.last_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @supervisor.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:app_user_id) %>:</strong></dt>
+  <dd><%= @supervisor.app_user_id %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

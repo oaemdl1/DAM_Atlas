@@ -2,18 +2,20 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%=DateTime.now.to_formatted_s(:short)%>
+
+
+<%= link_to('My Route', visitas_get_by_supervisor_path(:pIntIdSupervisor=>5)) %>
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:visit_date) %></th>
-      <th><%= model_class.human_attribute_name(:estimated_time) %></th>
-      <th><%= model_class.human_attribute_name(:motive) %></th>
-      <th><%= model_class.human_attribute_name(:comments) %></th>
+      <th>Visit end</th>
       <th><%= model_class.human_attribute_name(:company_id) %></th>
       <th><%= model_class.human_attribute_name(:supervisor_id) %></th>
       <th><%= model_class.human_attribute_name(:visit_status_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,14 +23,11 @@
     <% @visits.each do |visit| %>
       <tr>
         <td><%= link_to visit.id, visit_path(visit) %></td>
-        <td><%= visit.visit_date %></td>
-        <td><%= visit.estimated_time %></td>
-        <td><%= visit.motive %></td>
-        <td><%= visit.comments %></td>
-        <td><%= visit.company_id %></td>
-        <td><%= visit.supervisor_id %></td>
-        <td><%= visit.visit_status_id %></td>
-        <td><%=l visit.created_at %></td>
+        <td><%= visit.visit_date.strftime("%d/%m/%Y") %> <%=visit.visit_date.strftime("%I:%M%p")%></td>
+        <td><%= (visit.visit_date + (visit.estimated_time*60)).strftime("%d/%m/%Y") %> <%=(visit.visit_date + (visit.estimated_time*60)).strftime("%I:%M%p")%></td>
+        <td><%= visit.company.company_name %></td>
+        <td><%= visit.supervisor.name %> <%= visit.supervisor.last_name %></td>
+        <td><%= visit.visit_status.name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_visit_path(visit), :class => 'btn btn-default btn-xs' %>

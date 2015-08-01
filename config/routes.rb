@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
   resources :visits
+  resources :supervisors
+  resources :visits
+  resources :visits
   resources :visit_statuses
   resources :students
   resources :companies
-  resources :supervisors
   resources :specialties
   resources :districts
   resources :app_users
   devise_for :users
   resources :app_user_types
+  get 'home/index'
+  root 'home#index'
+
+  get "visitas/get_by_supervisor" => "visits#get_by_supervisor"
+  get "visitas/get_by_supervisor2" => "visits#get_by_supervisor2"
+  get "visitas/get_by_id" => "visits#get_by_id"
+  get "app_usuarios/login" => "app_users#login"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -64,6 +74,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  root 'home#index'
   
 end

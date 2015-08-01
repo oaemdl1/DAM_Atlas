@@ -3,7 +3,7 @@ class CreateSupervisors < ActiveRecord::Migration
     create_table :supervisors do |t|
       t.string :name
       t.string :last_name
-      t.references :user, index: true, foreign_key: true
+      t.references :app_user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

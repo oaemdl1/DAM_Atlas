@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801213254) do
+ActiveRecord::Schema.define(version: 20150801220932) do
 
   create_table "app_user_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -70,14 +70,14 @@ ActiveRecord::Schema.define(version: 20150801213254) do
   add_index "students", ["specialty_id"], name: "index_students_on_specialty_id", using: :btree
 
   create_table "supervisors", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "last_name",  limit: 255
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.string   "last_name",   limit: 255
+    t.integer  "app_user_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "supervisors", ["user_id"], name: "index_supervisors_on_user_id", using: :btree
+  add_index "supervisors", ["app_user_id"], name: "index_supervisors_on_app_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20150801213254) do
   add_foreign_key "companies", "districts"
   add_foreign_key "students", "companies"
   add_foreign_key "students", "specialties"
-  add_foreign_key "supervisors", "users"
+  add_foreign_key "supervisors", "app_users"
   add_foreign_key "visits", "companies"
   add_foreign_key "visits", "supervisors"
   add_foreign_key "visits", "visit_statuses"

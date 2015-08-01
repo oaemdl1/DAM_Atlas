@@ -18,7 +18,7 @@ class SupervisorsControllerTest < ActionController::TestCase
 
   test "should create supervisor" do
     assert_difference('Supervisor.count') do
-      post :create, supervisor: { last_name: @supervisor.last_name, name: @supervisor.name, user_id: @supervisor.user_id }
+      post :create, supervisor: { app_user_id: @supervisor.app_user_id, last_name: @supervisor.last_name, name: @supervisor.name }
     end
 
     assert_redirected_to supervisor_path(assigns(:supervisor))
@@ -35,7 +35,7 @@ class SupervisorsControllerTest < ActionController::TestCase
   end
 
   test "should update supervisor" do
-    patch :update, id: @supervisor, supervisor: { last_name: @supervisor.last_name, name: @supervisor.name, user_id: @supervisor.user_id }
+    patch :update, id: @supervisor, supervisor: { app_user_id: @supervisor.app_user_id, last_name: @supervisor.last_name, name: @supervisor.name }
     assert_redirected_to supervisor_path(assigns(:supervisor))
   end
 

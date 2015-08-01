@@ -61,6 +61,16 @@ class AppUsersController < ApplicationController
     end
   end
 
+  def login
+    #SAMPLE: https://upc-ok-moviles-luisreque.c9.io/app_usuarios/login?pStrLogin=lreque&pStrPwd=123456
+    app_user1 = AppUser.where(["login = ? AND password=?", params[:pStrLogin], params[:pStrPwd]]).joins(:app_user_type).select("app_users.name,app_users.last_name,app_users.login,app_users.app_user_type_id,app_user_types.name as user_type, supervisors.id as supervisor_id").joins("left join supervisors on app_users.id=supervisors.app_user_id");
+    #app_user1 = AppUser.where(["login = ? AND password=?", params[:pStrLogin], params[:pStrPwd]]);
+
+    render json: app_user1;
+#        format.json { render json: supervisor_visits, status: :ok }
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_app_user

@@ -3,8 +3,8 @@
   <%= error_span(@supervisor[:name]) %>
   <%= f.input :last_name %>
   <%= error_span(@supervisor[:last_name]) %>
-  <%= f.input :user_id %>
-  <%= error_span(@supervisor[:user_id]) %>
+  <%= f.input :app_user_id %>
+  <%= error_span(@supervisor[:app_user_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

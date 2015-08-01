@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  visit_date: 2015-08-01 21:32:54
+  visit_date: 2015-08-01 22:09:33
   estimated_time: 1
   motive: MyText
   comments: MyText
@@ -10,7 +10,7 @@ one:
   visit_status_id: 
 
 two:
-  visit_date: 2015-08-01 21:32:54
+  visit_date: 2015-08-01 22:09:33
   estimated_time: 1
   motive: MyText
   comments: MyText
