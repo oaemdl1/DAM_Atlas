@@ -9,7 +9,7 @@
   <%= error_span(@visit[:comments]) %>
   <%= f.association :company, :label_method => :company_name, :value_method => :id %>
   <%= error_span(@visit[:company_id]) %>
-  <%= f.association :supervisor, :label_method => lambda { |supervisor| "#{supervisor.name} #{supervisor.lastname}" }, :value_method => :id %>
+  <%= f.association :supervisor, :label_method => lambda { |supervisor| "#{supervisor.name} #{supervisor.last_name}" }, :value_method => :id %>
   <%= error_span(@visit[:supervisor_id]) %>
   
   <%= f.input :visit_status_id, :as => :hidden, :input_html => { :value => "1" } %>
