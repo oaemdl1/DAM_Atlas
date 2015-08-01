@@ -13,7 +13,7 @@
   <%= f.input :longitude %>
    Ejemplo: -12.0551118
   <%= error_span(@company[:longitude]) %>
-  <%= f.association :district, :label_method => :detalle, :value_method => :id, disabled: true %>
+  <%= f.association :district, :label_method => :name, :value_method => :id, disabled: true %>
   <%= error_span(@company[:district_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

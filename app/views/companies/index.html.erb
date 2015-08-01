@@ -26,7 +26,7 @@
           
           <% if company.latitude != nil && company.latitude != "" && company.longitude != nil && company.longitude != "" %>
               <td>
-              <a target="_blank" href="http://maps.google.com/maps?z=10&t=m&q=loc:<%=company.coordinate%>">
+              <a target="_blank" href="http://maps.google.com/maps?z=10&t=m&q=loc:<%=company.latitude%>,<%=company.longitude%>">
                   <%= image_tag("gmap.png", :border => 0, :title => "Ubicar en mapa") %>
               </a>
               </td>
