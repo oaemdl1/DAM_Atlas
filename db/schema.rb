@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801212905) do
+ActiveRecord::Schema.define(version: 20150801213254) do
 
   create_table "app_user_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -97,9 +97,34 @@ ActiveRecord::Schema.define(version: 20150801212905) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "visit_statuses", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.datetime "visit_date"
+    t.integer  "estimated_time",  limit: 4
+    t.text     "motive",          limit: 65535
+    t.text     "comments",        limit: 65535
+    t.integer  "company_id",      limit: 4
+    t.integer  "supervisor_id",   limit: 4
+    t.integer  "visit_status_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "visits", ["company_id"], name: "index_visits_on_company_id", using: :btree
+  add_index "visits", ["supervisor_id"], name: "index_visits_on_supervisor_id", using: :btree
+  add_index "visits", ["visit_status_id"], name: "index_visits_on_visit_status_id", using: :btree
+
   add_foreign_key "app_users", "app_user_types"
   add_foreign_key "companies", "districts"
   add_foreign_key "students", "companies"
   add_foreign_key "students", "specialties"
   add_foreign_key "supervisors", "users"
+  add_foreign_key "visits", "companies"
+  add_foreign_key "visits", "supervisors"
+  add_foreign_key "visits", "visit_statuses"
 end

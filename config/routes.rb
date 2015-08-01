@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :visits
+  resources :visit_statuses
   resources :students
   resources :companies
   resources :supervisors
