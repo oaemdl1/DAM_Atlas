@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "visitas/get_by_id" => "visits#get_by_id"
   get "app_usuarios/login" => "app_users#login"
   get "estudiantes/get_by_company" => "students#get_by_company"
+  get "visitas/get_by_supervisor_date" => "visits#get_by_supervisor_date"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
