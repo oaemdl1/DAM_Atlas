@@ -61,6 +61,15 @@ class StudentsController < ApplicationController
     end
   end
 
+  def get_by_company
+    #https://dam-atlas-luisreque.c9.io/estudiantes/get_by_company?pIntIdCompany=2
+    #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]);
+    items_student = Student.joins('INNER JOIN companies ON companies.id = students.company_id').where(["company_id = ?", params[:pIntIdCompany]]).select("students.id id_student,students.name,students.last_name,concat(students.name,' ', students.last_name) as full_name");
+
+    render json: items_student;
+#        format.json { render json: supervisor_visits, status: :ok }
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student

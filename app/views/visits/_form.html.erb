@@ -7,14 +7,77 @@
   <%= error_span(@visit[:motive]) %>
   <%= f.input :comments %>
   <%= error_span(@visit[:comments]) %>
-  <%= f.association :company, :label_method => :company_name, :value_method => :id %>
-  <%= error_span(@visit[:company_id]) %>
   <%= f.association :supervisor, :label_method => lambda { |supervisor| "#{supervisor.name} #{supervisor.last_name}" }, :value_method => :id %>
   <%= error_span(@visit[:supervisor_id]) %>
+  <%= f.association :company, :label_method => :company_name, :value_method => :id %>
+  <%= error_span(@visit[:company_id]) %>
+  <div id="divStudent">
+  <%= f.association :student, :label_method => lambda { |student| "#{student.name} #{student.last_name}" }, :value_method => :id %>
+  <%= error_span(@visit[:student_id]) %>
+    <span id="spanErrorStudent" class="help-block" style="display:none">Seleccione un estudiante</span>
+  </div>
   
   <%= f.input :visit_status_id, :as => :hidden, :input_html => { :value => "1" } %>
   
-  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= f.button :submit, :class => 'btn-primary', :id => 'btnGrabarVisita', :onclick => "return f_grabar_visita()" %>
+
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 visits_path, :class => 'btn btn-default' %>
 <% end %>
+<script>
+  $( document ).ready(function() {
+    $("#visit_student_id").empty();
+    f_load_students();
+    $('#visit_company_id').change(function () {
+        f_load_students();
+    });
+    
+    //https://dam-atlas-luisreque.c9.io/estudiantes/get_by_company?pIntIdCompany=2
+    //alert($("#visit_company_id").val());
+  });
+  
+    
+  function f_grabar_visita(){
+      $("#spanErrorStudent").hide();
+      if($("#visit_student_id").val()==null||$("#visit_student_id").val()==""){
+        //alert("Seleccione un estudiante");
+        $("#spanErrorStudent").show();
+        $("#divStudent").removeClass("has-error").addClass( "has-error" );
+        return false;
+      }
+      else{
+        return true;
+      }
+  }
+    
+    
+  function f_load_students(){
+      var strIdCompany = $('#visit_company_id').val();
+      $('#visit_student_id').empty();
+      if (strIdCompany != "") {
+          var dataToSend = {
+              //pIntIdCompany: strIdCompany
+          };
+          $.ajax({
+              url: "https://dam-atlas-luisreque.c9.io/estudiantes/get_by_company?pIntIdCompany="+strIdCompany,
+              data: dataToSend,
+              success: function (result) {
+                  /*('#visit_student_id').append(
+                      $('<option/>', {
+                          value: "-1",
+                          text: "(Seleccione)"
+                      })
+                  );*/
+                  $.each(result, function (index, item) {
+                      $('#visit_student_id').append(
+                          $('<option/>', {
+                              value: item.student_id,
+                              text: item.full_name
+                          })
+                      );
+                  });
+              }
+          });
+      }
+  }
+</script>

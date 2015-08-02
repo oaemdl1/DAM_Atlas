@@ -14,6 +14,7 @@
       <th><%= model_class.human_attribute_name(:visit_date) %></th>
       <th>Visit end</th>
       <th><%= model_class.human_attribute_name(:company_id) %></th>
+      <th><%= model_class.human_attribute_name(:student_id) %></th>
       <th><%= model_class.human_attribute_name(:supervisor_id) %></th>
       <th><%= model_class.human_attribute_name(:visit_status_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -26,6 +27,7 @@
         <td><%= visit.visit_date.strftime("%d/%m/%Y") %> <%=visit.visit_date.strftime("%I:%M%p")%></td>
         <td><%= (visit.visit_date + (visit.estimated_time*60)).strftime("%d/%m/%Y") %> <%=(visit.visit_date + (visit.estimated_time*60)).strftime("%I:%M%p")%></td>
         <td><%= visit.company.company_name %></td>
+        <td><%= visit.student.name %> <%= visit.student.last_name %></td>
         <td><%= visit.supervisor.name %> <%= visit.supervisor.last_name %></td>
         <td><%= visit.visit_status.name %></td>
         <td>
