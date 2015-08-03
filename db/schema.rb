@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801220932) do
+ActiveRecord::Schema.define(version: 20150803000412) do
 
   create_table "app_user_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -110,12 +110,14 @@ ActiveRecord::Schema.define(version: 20150801220932) do
     t.text     "comments",        limit: 65535
     t.integer  "company_id",      limit: 4
     t.integer  "supervisor_id",   limit: 4
+    t.integer  "student_id",      limit: 4
     t.integer  "visit_status_id", limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
   add_index "visits", ["company_id"], name: "index_visits_on_company_id", using: :btree
+  add_index "visits", ["student_id"], name: "index_visits_on_student_id", using: :btree
   add_index "visits", ["supervisor_id"], name: "index_visits_on_supervisor_id", using: :btree
   add_index "visits", ["visit_status_id"], name: "index_visits_on_visit_status_id", using: :btree
 
@@ -125,6 +127,7 @@ ActiveRecord::Schema.define(version: 20150801220932) do
   add_foreign_key "students", "specialties"
   add_foreign_key "supervisors", "app_users"
   add_foreign_key "visits", "companies"
+  add_foreign_key "visits", "students"
   add_foreign_key "visits", "supervisors"
   add_foreign_key "visits", "visit_statuses"
 end

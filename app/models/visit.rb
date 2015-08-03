@@ -1,9 +1,9 @@
 class Visit < ActiveRecord::Base
   validate :model_validate, :supervisor_availability
   belongs_to :company
+  belongs_to :student
   belongs_to :supervisor
   belongs_to :visit_status
-  belongs_to :student
   
   def model_validate
     if visit_date.present? && visit_date < Date.today
@@ -12,7 +12,8 @@ class Visit < ActiveRecord::Base
     if company == nil
       errors.add(:company, "Seleccione una empresa")
     end
-    if student == nil || student == ""
+
+    if student == nil 
       errors.add(:student, "Seleccione un estudiante")
     end
     if supervisor == nil

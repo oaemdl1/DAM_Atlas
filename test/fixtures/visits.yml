@@ -1,19 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  visit_date: 2015-08-01 22:09:33
+  visit_date: 2015-08-03 00:04:12
   estimated_time: 1
   motive: MyText
   comments: MyText
   company_id: 
   supervisor_id: 
+  student_id: 
   visit_status_id: 
 
 two:
-  visit_date: 2015-08-01 22:09:33
+  visit_date: 2015-08-03 00:04:12
   estimated_time: 1
   motive: MyText
   comments: MyText
   company_id: 
   supervisor_id: 
+  student_id: 
   visit_status_id: 

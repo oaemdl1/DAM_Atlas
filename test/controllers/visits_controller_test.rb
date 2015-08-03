@@ -18,7 +18,7 @@ class VisitsControllerTest < ActionController::TestCase
 
   test "should create visit" do
     assert_difference('Visit.count') do
-      post :create, visit: { comments: @visit.comments, company_id: @visit.company_id, estimated_time: @visit.estimated_time, motive: @visit.motive, supervisor_id: @visit.supervisor_id, visit_date: @visit.visit_date, visit_status_id: @visit.visit_status_id }
+      post :create, visit: { comments: @visit.comments, company_id: @visit.company_id, estimated_time: @visit.estimated_time, motive: @visit.motive, student_id: @visit.student_id, supervisor_id: @visit.supervisor_id, visit_date: @visit.visit_date, visit_status_id: @visit.visit_status_id }
     end
 
     assert_redirected_to visit_path(assigns(:visit))
@@ -35,7 +35,7 @@ class VisitsControllerTest < ActionController::TestCase
   end
 
   test "should update visit" do
-    patch :update, id: @visit, visit: { comments: @visit.comments, company_id: @visit.company_id, estimated_time: @visit.estimated_time, motive: @visit.motive, supervisor_id: @visit.supervisor_id, visit_date: @visit.visit_date, visit_status_id: @visit.visit_status_id }
+    patch :update, id: @visit, visit: { comments: @visit.comments, company_id: @visit.company_id, estimated_time: @visit.estimated_time, motive: @visit.motive, student_id: @visit.student_id, supervisor_id: @visit.supervisor_id, visit_date: @visit.visit_date, visit_status_id: @visit.visit_status_id }
     assert_redirected_to visit_path(assigns(:visit))
   end
 

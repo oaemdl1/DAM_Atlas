@@ -27,7 +27,13 @@
         <td><%= visit.visit_date.strftime("%d/%m/%Y") %> <%=visit.visit_date.strftime("%I:%M%p")%></td>
         <td><%= (visit.visit_date + (visit.estimated_time*60)).strftime("%d/%m/%Y") %> <%=(visit.visit_date + (visit.estimated_time*60)).strftime("%I:%M%p")%></td>
         <td><%= visit.company.company_name %></td>
+        <% if(visit.student==nil) %>
+        <td>-</td>
+        <%  else 
+        %>
         <td><%= visit.student.name %> <%= visit.student.last_name %></td>
+        <% end%>
+
         <td><%= visit.supervisor.name %> <%= visit.supervisor.last_name %></td>
         <td><%= visit.visit_status.name %></td>
         <td>
