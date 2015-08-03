@@ -61,6 +61,35 @@ class VisitsController < ApplicationController
     end
   end
 
+  def get_by_supervisor 
+    #https://dam-atlas-luisreque.c9.io/visitas/get_by_supervisor?pIntIdSupervisor=5
+    #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]);
+    #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company");
+    supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company, students.name as student_name, students.last_name as student_last_name").joins('INNER JOIN students ON visits.student_id = students.id');
+
+    render json: supervisor_visits;
+#        format.json { render json: supervisor_visits, status: :ok }
+  end
+  
+  def get_by_supervisor_date
+    #https://dam-atlas-luisreque.c9.io/visitas/get_by_supervisor_date?pIntIdSupervisor=5&pStrFecha=2015-08-17
+    supervisor_visits = Visit.where(["supervisor_id = ? AND date_format(visit_date,'%Y-%m-%d')=?", params[:pIntIdSupervisor],params[:pStrFecha]]).joins(:company).select("visits.id id_visit,company_name,visit_date,estimated_time,companies.id as id_company, students.name as student_name, students.last_name as student_last_name").joins('INNER JOIN students ON visits.student_id = students.id');
+
+    render json: supervisor_visits;
+#        format.json { render json: supervisor_visits, status: :ok }
+  end
+  
+  def get_by_id
+    #https://upc-ok-moviles-luisreque.c9.io/visitas/get_by_supervisor?pIntIdSupervisor=5
+    #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]);
+    #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company");
+    item_visit = Visit.where(["visits.id = ?", params[:pIntIdVisit]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company, students.name as student_name, students.last_name as student_last_name, latitude, longitude, address").joins('INNER JOIN students ON companies.id = students.company_id');
+
+    render json: item_visit;
+#        format.json { render json: supervisor_visits, status: :ok }
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_visit
