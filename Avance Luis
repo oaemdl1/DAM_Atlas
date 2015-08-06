@@ -1,3 +1,4 @@
+//https://dam-atlas-luisreque.c9.io
 
 bundle
 
@@ -22,7 +23,22 @@ git add .
 git commit -am "Home controller"
 git push origin master
 
-rails g scaffold peas specialty:references ciclo:string detalle:text
+/*******************************************/
+
+rails g scaffold student_aspects name
+
+rails g scaffold student_evaluations eval_date:date problems:text solutions:text student:references supervisor:references
+
+rails g scaffold student_peas desc:string porcent:double student_evaluations:references
+
+
+student_pea_detail
+porcent
+
+
+rails g scaffold student_aspects_det student:references;
+
+
 rails g scaffold pea_avances pea:references dominio:string oper_ejecutar:boolean oper_seminario:boolean
 
 rails g bootstrap:themed peas

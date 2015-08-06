@@ -26,11 +26,11 @@ class Visit < ActiveRecord::Base
   
   def supervisor_availability
     if supervisor != nil && company != nil
-      #available_books = Visit.where(["supervisor_id = ? and visit_date >= ?", supervisor.id, visit_date]);
-      available_books = Visit.where(["supervisor_id = ? and (visit_date >= ? and ? < visit_date+estimated_time)", supervisor.id, visit_date, visit_date]);
-      #available_books = Visit.where(["supervisor_id = ?", supervisor.id]);
-    
-      if available_books.count > 1
+      #OK!!: available_books = Visit.where(["supervisor_id = ? and (visit_date >= ? and ? < visit_date+estimated_time)", supervisor.id, visit_date, visit_date]);
+      #available_books = Visit.where(["supervisor_id = ? and ((visit_date between ? and ?) OR ((visit_date+estimated_time) between ? and ?))", supervisor.id, visit_date, visit_date]);
+      available_visits = Visit.where(["supervisor_id = ? and ((? between visit_date and visit_date+interval estimated_time minute) OR ((?+interval ? minute) between visit_date and visit_date+interval estimated_time minute))", supervisor.id, visit_date, visit_date, estimated_time]);
+      #select * from visits where supervisor_id=5 and (('2015-09-09 11:00:00' between visit_date and (visit_date+interval estimated_time minute)) OR ('2015-09-09 12:00:00'  between visit_date and visit_date+interval estimated_time minute));
+      if available_visits.count > 1
           errors.add(:supervisor, "El supervisor ya tiene asignada una visita en la fecha seleccionada.")
       end
     end
