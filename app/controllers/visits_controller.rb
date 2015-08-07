@@ -65,7 +65,7 @@ class VisitsController < ApplicationController
     #https://dam-atlas-luisreque.c9.io/visitas/get_by_supervisor?pIntIdSupervisor=5
     #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]);
     #supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company");
-    supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company, students.name as student_name, students.last_name as student_last_name").joins('INNER JOIN students ON visits.student_id = students.id');
+    supervisor_visits = Visit.where(["supervisor_id = ?", params[:pIntIdSupervisor]]).joins(:company).select("visits.id id_visit,company_name,visit_date,companies.id as id_company, url, students.name as student_name, students.last_name as student_last_name").joins('INNER JOIN students ON visits.student_id = students.id');
 
     render json: supervisor_visits;
 #        format.json { render json: supervisor_visits, status: :ok }

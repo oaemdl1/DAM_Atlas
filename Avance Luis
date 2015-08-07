@@ -1,4 +1,19 @@
 //https://dam-atlas-luisreque.c9.io
+https://github.com/oaemdl1/AppSenatiPEA.git
+update companies set url='http://www.pogostorage.com/images/logos/logo_nexenta.gif' where id=1;
+update companies set url='http://www.qatarmark.com/qmmultilingual//uploads/cl-270/comp-577/logos/lgs4c163a4c5fad9.jpg' where id=2;
+update companies set url='http://4.bp.blogspot.com/-yMNIToS6jJM/UiyDjnnvJhI/AAAAAAAAb3o/Gobj0aWySXU/s128/Titan+Company+logo+2013.png' where id=3;
+update companies set url='http://static.nationwide.com/static/icon-opt-link-logo.gif?r=46' where id=4;
+update companies set url='https://www.6gbusiness.co.uk/img/site/pages/home/feature_logo.png' where id=5;
+update companies set url='http://wwcdn.weddingwire.com/vendor/590001_595000/592707/thumbnails/96x96_SQ_1369872662798-logo.jpg' where id=6;
+update companies set url='http://wwcdn.weddingwire.com/vendor/120001_125000/122127/thumbnails/96x96_SQ_1427152994079-sp3-logo---full-color.jpg' where id=7;
+update companies set url='http://www.eaeprogramas.es/empresa-familiar/wp-content/themes/edp-familiar/images/logo_small.png' where id=8;
+update companies set url='http://www.udc.gal/export/sites/udc/biblioteca.economia/_galeria_imgs/Pinterest-logo-300x300.png_924480164.png' where id=9;
+update companies set url='http://www.savance.com/portals/0/logos/savance_enterprise_logo_50.png' where id=10;
+update companies set url='http://www.tri-line.com/common/img/tim_enterprise_logo_small.png' where id=11;
+update companies set url='http://i00.i.aliimg.com/img/company/v5/23/00/85/49/2300854941379327346743_logo.jpg' where id=12;
+
+
 
 bundle
 
